@@ -1,24 +1,27 @@
 using System;
 
-public class Panda
+public class Rectangle
 {
-    private string name;  // Define field
+    public readonly float Width, Height;
 
-    // Constructor
-    public Panda(string n)
+    public Rectangle(float width, float height)
     {
-        name = n;  // Initialize field
+        Width = width;
+        Height = height;
     }
 
-    // Optional: A method to get the name
-    public string GetName()
+    public void Deconstruct(out float width, out float height)
     {
-        return name;
+        width = Width;
+        height = Height;
     }
-
-    public static void Main()
+}
+class Program
+{
+    static void Main()
     {
-        Panda p = new Panda("John Doe");  // Call constructor
-        Console.WriteLine("Panda's name is: " + p.GetName());  // Print name
+        Rectangle rect = new Rectangle(9.5f, 4.5f);
+        var (w, h) = rect;
+        Console.WriteLine($"Width: {w}, Height: {h}");
     }
 }
