@@ -1,0 +1,24 @@
+using System;
+
+public class Panda
+{
+    private string name;  // Define field
+
+    // Constructor
+    public Panda(string n)
+    {
+        name = n;  // Initialize field
+    }
+
+    // Optional: A method to get the name
+    public string GetName()
+    {
+        return name;
+    }
+
+    public static void Main()
+    {
+        Panda p = new Panda("John Doe");  // Call constructor
+        Console.WriteLine("Panda's name is: " + p.GetName());  // Print name
+    }
+}
