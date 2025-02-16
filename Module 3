@@ -1,27 +1,45 @@
 using System;
 
-public class Rectangle
+public class Animal
 {
-    public readonly float Width, Height;
+    public string Name { get; set; }
 
-    public Rectangle(float width, float height)
+    public Animal(string name)
     {
-        Width = width;
-        Height = height;
+        Name = name;
     }
 
-    public void Deconstruct(out float width, out float height)
+    public virtual void Speak()
     {
-        width = Width;
-        height = Height;
+        Console.WriteLine("This animal makes a sound.");
+    }
+
+    public void DisplayType()
+    {
+        Console.WriteLine($"This is a {GetType().Name}.");
     }
 }
+
+public class Dog : Animal
+{
+    public Dog(string name) : base(name) {}
+
+    public override void Speak()
+    {
+        Console.WriteLine($"{Name} barks: Woof! Woof!");
+    }
+}
+
+
 class Program
 {
     static void Main()
     {
-        Rectangle rect = new Rectangle(9.5f, 4.5f);
-        var (w, h) = rect;
-        Console.WriteLine($"Width: {w}, Height: {h}");
+        Dog myDog = new Dog("Buddy");
+       
+
+        myDog.DisplayType();
+        myDog.Speak();
+
     }
 }
