@@ -1,8 +1,7 @@
 using System;
-
-public class Animal
+class Animal
 {
-    public string Name { get; set; }
+    public readonly string Name;
 
     public Animal(string name)
     {
@@ -19,27 +18,31 @@ public class Animal
         Console.WriteLine($"This is a {GetType().Name}.");
     }
 }
-
-public class Dog : Animal
+class Octopus : Animal
 {
-    public Dog(string name) : base(name) {}
+    public readonly int Legs = 8;
+
+    public Octopus(string name) : base(name) { }
 
     public override void Speak()
     {
-        Console.WriteLine($"{Name} barks: Woof! Woof!");
+        Console.WriteLine($"{Name} makes bubbling sounds underwater!");
+    }
+
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"Octopus Name: {Name}");
+        Console.WriteLine($"Number of Legs: {Legs}");
     }
 }
-
-
 class Program
 {
     static void Main()
     {
-        Dog myDog = new Dog("Buddy");
-       
+        Octopus myOctopus = new Octopus("John Doe");
 
-        myDog.DisplayType();
-        myDog.Speak();
-
+        myOctopus.DisplayType(); 
+        myOctopus.DisplayInfo();
+        myOctopus.Speak();    
     }
 }
